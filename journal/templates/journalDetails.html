@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h2>Journal</h2>
+<form action="{% url 'editJournal' id %}" method="POST">
+  {% csrf_token %}
+  {{ journal | crispy}}
+  <button type="submit">Save</button>
+</form>
+<button class="btn btn-primary" id="aiHelp"">Ask AI for Assistance</button>
+<a  class="btn btn-primary" href=" {% url 'journals' %}"> Exit Journal </a>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    a = null
+    $(document).ready(async () => {
+
+      bodyInput = $("#id_body")
+      // catch the form's submit event
+
+      $('#aiHelp').click(async (event) => {
+        const response = await fetch("{% url 'streamAIResponse' %}", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/event-stream',
+          },
+          body: JSON.stringify({
+            "content": bodyInput.val(),
+          }),
+        }
+        )
+        const reader = response.body.getReader()
+        bodyInput.val(bodyInput.val() + "\n\njournalAI:")
+while (true) {
+  const {value, done} = await reader.read();
+  if (done) break;
+
+      var pr =  new TextDecoder().decode(value).split("||");
+      pr.pop()
+
+      pr.forEach(element => {
+        j = JSON.parse(element)
+        if(j.content != null){
+          bodyInput.val(bodyInput.val() + j.content)
+        }
+        console.log(j)
+
+});
+}     
+      }
+
+
+      );
+    })
+  </script>
+  {% endblock content %}

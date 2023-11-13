@@ -1,0 +1,21 @@
+
+
+{% extends 'userbase.html' %}
+{% load crispy_forms_tags %}
+
+{% block formUsed %}
+
+        <div>
+            <h2>Sign Up</h2>
+        </div>
+        {% csrf_token %}
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {{ form | crispy}}
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a class="btn" href="{% url 'login' %}">Cancel</a>
+            
+        </form>
+        
+{% endblock %}
+    

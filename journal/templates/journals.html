@@ -1,0 +1,42 @@
+
+    {% extends "base.html" %}
+{% block content %}
+    <div>
+      <h1>{{ user.username }}'s Journals</h1>
+        {% for journal in journals %}
+        
+        <form action="{% url 'accessJournalDetails'%}" method="post">
+            {% csrf_token %}
+            <div class="container card text-center">
+                <div class="row">
+                    
+                        <div class="col-5">
+                            <h2>{{journal.title}}</h2>
+                        </div>
+    
+                        <div class="col">
+                            <label class="form-label" for="journal_password"> Password </label>
+                            <input class="form-control" name="journal_password" id="journal_password">
+                        </div>
+
+                        <div class="col-3">
+                            <button class="btn btn-primary mt-3" type="submit">Open Journal</button>
+                        </div>
+                    
+                        <input hidden  name="journal_id" value="{{ journal.id }}">
+                    
+                </div>
+                
+            </div>
+
+        </form>
+             <!-- display the journal title -->
+        {% endfor %} <!-- end the loop -->
+    </ul>
+</div>
+
+    <div class="button">
+    <a class="btn btn-primary" href="{% url 'post_journal' %}"> Create a journal </a>
+    <a href="{% url 'logout' %}" class="btn btn-danger"></a>
+</div>
+{% endblock content %}
