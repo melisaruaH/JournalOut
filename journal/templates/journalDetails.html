@@ -10,8 +10,6 @@
 <a  class="btn btn-primary" href=" {% url 'journals' %}"> Exit Journal </a>
 
 </form>
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     a = null
@@ -31,8 +29,9 @@
           }),
         }
         )
-        const reader = response.body.getReader()
         bodyInput.val(bodyInput.val() + "\n\njournalAI:")
+        const reader = response.body.getReader()
+
 while (true) {
   const {value, done} = await reader.read();
   if (done) break;
