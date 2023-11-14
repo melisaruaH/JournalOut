@@ -5,10 +5,11 @@
 <form action="{% url 'editJournal' id %}" method="POST">
   {% csrf_token %}
   {{ journal | crispy}}
-  <button type="submit">Save</button>
-</form>
-<button class="btn btn-primary" id="aiHelp"">Ask AI for Assistance</button>
+  <button class="btn btn-primary"  type="submit">Save</button>
+  <button class="btn btn-primary" id="aiHelp"">Ask AI for Assistance</button>
 <a  class="btn btn-primary" href=" {% url 'journals' %}"> Exit Journal </a>
+
+</form>
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

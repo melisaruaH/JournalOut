@@ -21,11 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1ht6dld-)1i-n+j$hs6#n9aex9-spv4@31py^wk$+e5i$uwxsc'
-OPENAI_KEY = "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"
+OPENAI_KEY = "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" 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["34.151.234.227"]
+ALLOWED_HOSTS = ["34.151.234.227","127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     "user",
     "journal",
     "crispy_forms",

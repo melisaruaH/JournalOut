@@ -21,13 +21,14 @@
 
      body{
         min-height: 100%;
+        background-color: aliceblue;
      }
 
      #logo{
         min-width: 60%;
      }
 
-     #logo-col{
+     .coluser{
         display: flex;
    align-items: center;
    justify-content: center;
@@ -37,11 +38,11 @@
 
 <body>
 <div class="container-fluid" style="height: 100vh;">
-    <div class="row flex-nowrap">
-        <div id="logo-col"class="col-5" >
+    <div class="row flex-nowrap" style="height: inherit;">
+        <div class="col-5 coluser" >
             <img id="logo" src="{% static 'logo.png' %}" alt="lean">
         </div>
-        <div class="col-10 mt-5">
+        <div class="col-10 coluser">
             {% block formUsed %}
             {% endblock %}
         </div>
