@@ -6,7 +6,7 @@
   {% csrf_token %}
   {{ journal | crispy}}
   <button class="btn btn-primary"  type="submit">Save</button>
-  <button class="btn btn-primary" id="aiHelp"">Ask AI for Assistance</button>
+  <button type="button" class="btn btn-primary" id="aiHelp"">Ask AI for Assistance</button>
 <a  class="btn btn-primary" href=" {% url 'journals' %}"> Exit Journal </a>
 
 </form>
